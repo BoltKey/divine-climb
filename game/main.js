@@ -3,7 +3,11 @@ lastDivPos,
 keysDown,
 lastkd,
 ground,
-tilew;
+tilew,
+player,
+lava
+
+;
 
 
 function main() {
@@ -19,20 +23,29 @@ function main() {
 	lastDivPos = {x: 0, y: 0};
 	lastmd = 0;
 	mouseDown = 0;
-	document.body.onmousedown = function() { 
-		mouseDown = 1
+	document.body.onmousedown = function(e) { 
+		mouseDown = e.buttons;
 	}
 	document.body.onmouseup = function() { 
 		mouseDown = 0;
 	}
+	document.body.oncontextmenu = function(){return false};
 	
 	ground = new Ground();
+	player = new Player();
+	lava = new Lava();
+	
+	scr = new ScrollManager([canvas.width, canvas.height], 0.01);
+	
 	mainloop();
 }
 
 function mainloop() {
 	requestAnimationFrame(mainloop);
+	player.update();
 	
+	scr.update([player.x * tilew + canvas.width * 0.3, ground.getHeight([player.x]) * tilew + canvas.height * 0.18]);
+	lava.update();
 	
 	checkKeys();
 	checkMouse();

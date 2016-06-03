@@ -2,11 +2,32 @@ function click() {
 	/*if (showResult && !inplay) {
 		start();
 	}*/
-	console.log("click ", divPos);
+	var col = getMouseCol();
+	console.log("the col is " + col);
+	ground.removeBlock(col);
+}
+function rightClick(e) {
+	var col = getMouseCol();
+	console.log("the col is " + col);
+	ground.addBlock(col);
+	console.log('rightclick');
+	return false;
+}
+
+function getMouseCol() {
+	return Math.floor((divPos.x - scr[0]) / tilew)
 }
 
 function drag() {
 	
+}
+
+function mouseIdle() {
+	
+}
+
+function release() {
+	/**/
 }
 
 function isMouseIn(obj) {
@@ -20,8 +41,17 @@ function isMouseIn(obj) {
 function checkMouse() {
 	if (mouseDown) {
 		if (!lastmd) {
-			click();
+			if (mouseDown === 2)
+				rightClick();
+			else 
+				click();
 		}
 		drag();
+	}
+	else if (lastmd && !mouseDown) {
+		release();
+	}
+	else {
+		mouseIdle();
 	}
 }
