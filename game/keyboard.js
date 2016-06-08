@@ -23,7 +23,11 @@ function checkKeys() {
 }
 
 function keyPress(k) {
-	
+	if (k === 77) {
+		sounds.music.volume = muted * 0.1;
+		muted = !muted;
+		
+	}
 }
 function keyHold(k) {
 	

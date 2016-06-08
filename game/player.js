@@ -37,6 +37,9 @@ function Player() {
 				win();
 			}
 			
+			if (this.x >= 50 && !tutorStartTime) {
+				tutorStartTime = timer;
+			}
 			// check for coins
 			for (var i = -1; i < 2; ++i) {
 				var c = coins[this.currCoin + i];

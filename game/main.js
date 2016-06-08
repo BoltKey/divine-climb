@@ -14,7 +14,9 @@ won = false,
 timer = 0,
 fps = 50,
 programStart,
-deathTime
+deathTime,
+tutorStartTime,
+muted = false
 
 ;
 

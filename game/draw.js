@@ -80,9 +80,13 @@ function drawWelcomeText() {
 	ctx.fillText("The stickman tries to move forward if there are any higher spots reachable", 300 + scr[0], 320 - scr[1]);
 	ctx.fillText("Left click to remove blocks, right click to add blocks", 260 + scr[0], 450 - scr[1]);
 	ctx.fillText("Divine powers cost mana", 900 + scr[0], 200 - scr[1]);
-	ctx.fillText("Collect mana orbs to get mana and improve mana regeneration", 1200 + scr[0], 20 - scr[1]);
-	ctx.drawImage(graphics.wjtut, 1600 + scr[0], -450 - scr[1]);
-	ctx.fillText("If stickman and block are in this arrangement, the stickman makes a walljump", 1800 + scr[0], -350 - scr[1]);
+	ctx.fillText("When stickman grabs mana orbs, you get mana and improve mana regeneration", 1200 + scr[0], 20 - scr[1]);
+	if (tutorStartTime) {
+		ctx.globalAlpha = Math.min(1, Math.max(0, (-Math.abs(tutorStartTime - timer + 150) + 150) / 50));
+		ctx.drawImage(graphics.wjtut, 100, 240);
+		ctx.fillText("If stickman and blocks are in this arrangement, the stickman makes a walljump", canvas.width / 2, 220);
+		ctx.globalAlpha = 1;
+	}
 }
 
 function drawEndText() {

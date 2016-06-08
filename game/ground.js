@@ -66,7 +66,8 @@ function Ground() {
 				this.heights[x] -= multi || 1;
 				this.beamx = x;
 				this.beamTime = 8;
-				sounds.remove[sounds.remove.curr++ % 10].play();
+				if (!muted)
+					sounds.remove[sounds.remove.curr++ % 10].play();
 			}
 		}
 	}
@@ -83,7 +84,8 @@ function Ground() {
 				this.heights[x] += multi || 1;	
 				this.beamx = x;
 				this.beamTime = -8;
-				sounds.drop[sounds.remove.curr++ % 10].play();
+				if (!muted)
+					sounds.drop[sounds.remove.curr++ % 10].play();
 			}
 		}
 	}
