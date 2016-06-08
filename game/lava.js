@@ -40,7 +40,7 @@ function Lava() {
 					gameOver();
 				}
 			}
-			sounds.lava.volume = Math.min(1, this.heat);
+			sounds.lava.volume = muted ? 0 : Math.min(1, this.heat);
 		}
 	}
 	this.draw = function() {

@@ -28,6 +28,9 @@ function keyPress(k) {
 		muted = !muted;
 		
 	}
+	if (k === 82) {
+		restart();
+	}
 }
 function keyHold(k) {
 	

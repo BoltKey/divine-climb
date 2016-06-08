@@ -79,6 +79,7 @@ function drawWelcomeText() {
 	ctx.fillText("Fortunately, there happens to be a divine strength to rescue him", 350 + scr[0], 280 - scr[1]);
 	ctx.fillText("The stickman tries to move forward if there are any higher spots reachable", 300 + scr[0], 320 - scr[1]);
 	ctx.fillText("Left click to remove blocks, right click to add blocks", 260 + scr[0], 450 - scr[1]);
+	ctx.fillText("R to restart, M to mute", 280 + scr[0], 500 - scr[1]);
 	ctx.fillText("Divine powers cost mana", 900 + scr[0], 200 - scr[1]);
 	ctx.fillText("When stickman grabs mana orbs, you get mana and improve mana regeneration", 1200 + scr[0], 20 - scr[1]);
 	if (tutorStartTime) {

@@ -42,6 +42,7 @@ function main() {
         x: e.pageX - offset.top,
         y: e.pageY - offset.left
 		}
+		e.preventDefault()
 	})
 	lastDivPos = {x: 0, y: 0};
 	lastmd = 0;
@@ -139,5 +140,6 @@ function win() {
 		sounds.victory.volume = 0;
 		$(sounds.victory).animate({volume: 1}, 5000);
 		sounds.victory.play();
+		kongregate.stats.submit("height", ground.getHeight(player.x));
 	}
 }

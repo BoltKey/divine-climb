@@ -73,7 +73,8 @@ function Player() {
 		ground.pow += 300;
 		ground.pow = Math.min(ground.maxPow, ground.pow);
 		ground.powRegen += 0.06;
-		sounds.mana.play();
+		if (!muted) 
+			sounds.mana.play();
 	}
 	this.update = function() {
 		if (++this.lastMove > this.rate && ingame) {
