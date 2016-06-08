@@ -16,12 +16,23 @@ fps = 50,
 programStart,
 deathTime,
 tutorStartTime,
-muted = false
+muted = false,
+kongregate
 
 ;
 
 
 function main() {
+	// kong
+	if (typeof(kongregateAPI) !== 'undefined') {
+		kongregateAPI.loadAPI(onComplete);
+		
+	}
+	function onComplete() {
+		kongregate = kongregateAPI.getAPI();
+	}
+		
+	
 	console.log("main");
 	programStart = Date.now();
 	//mouse
@@ -106,6 +117,7 @@ function gameOver() {
 		console.log("die");
 		deathTime = timer;
 		ingame = false;
+		kongregate.stats.submit("height", ground.getHeight(player.x));
 	}
 }
 

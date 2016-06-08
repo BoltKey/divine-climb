@@ -17,6 +17,7 @@ function Player() {
 		
 		var lastH = ground.getHeight(this.x);
 		this.lastDir = Math.sign(this.maxReach[0] - this.x);
+		
 		if (this.lastDir >= 0 || 
 		(this.lastDir === -1 && 
 		ground.getHeight(this.x + 1) >= lastH + 2 && 
@@ -24,12 +25,8 @@ function Player() {
 			this.x += this.lastDir; 
 			var nowH = ground.getHeight(this.x);
 			this.lastType = ["bigfall", "fall", "run", "climb"][nowH - lastH + 2];
-			if (this.maxReach[0] === this.x && nowH === lastH) {
-				this.lastType = "idle";
-			}
-			else {
-				this.lastMove = 0;
-			}
+			
+			
 			lava.y = Math.max(ground.getHeight(this.x) - this.maxLead, lava.y);
 			
 			//check for win
@@ -45,10 +42,10 @@ function Player() {
 				var c = coins[this.currCoin + i];
 				if (c) {
 					var h = ground.getHeight(this.x);
-					if (c.x >= this.x - (this.lastType === "climb" || this.lastType === "fall" || this.lastType === "bigfall") && 
-						c.x <= this.x &&
-						c.y >= h &&
-						c.y <= h + (this.lastType === "fall")) {
+					if (c.x >= this.x - (this.lastType === "climb" || this.lastType === "fall" || this.lastType === "bigfall")- this.lastDir * 0.5 + 0.5 && 
+					c.x <= this.x - this.lastDir * 0.5 + 0.5&&
+					c.y >= h &&
+					c.y <= h + (this.lastType === "fall")) {
 						console.log("grab coin");
 						coins.splice(this.currCoin + i, 1);
 						this.coinGrab();
@@ -62,6 +59,12 @@ function Player() {
 			if (this.x === 6) {
 				lava.init();
 			}
+		}
+		if (this.maxReach[0] === this.x && nowH === lastH) {
+			this.lastType = "idle";
+		}
+		else {
+			this.lastMove = 0;
 		}
 	}
 	this.coinGrab = function() {
@@ -81,8 +84,6 @@ function Player() {
 	this.draw = function() {
 		var y = canvas.height - (ground.getHeight(this.x) + 1) * tilew - scr[1] ;
 		var x = (this.x - 1 + this.lastMove / this.rate) * tilew + scr[0];
-		/*ctx.fillStyle = "red";
-		ctx.fillRect(this.x * tilew + scr[0], canvas.height - y * tilew - scr[1], tilew, tilew);*/
 		var sheety = 0;
 		var sheetx = 0;
 		var one = 1;

@@ -56,12 +56,12 @@ function Ground() {
 	this.removeBlock = function(x, multi) {
 		if (ingame && x < this.max) {
 			if (player.x === x) {
-				if (Math.random() < 0.5)
+				/*if (Math.random() < 0.5)
 					x += 1;
 				else 
-					x -= 1;
+					x -= 1;*/
 			}
-			if (this.pow >= this.removeCost) {
+			else if (this.pow >= this.removeCost) {
 				this.pow -= this.removeCost;
 				this.heights[x] -= multi || 1;
 				this.beamx = x;
@@ -74,12 +74,12 @@ function Ground() {
 	this.addBlock = function(x, multi) {
 		if (ingame && x < this.max) {
 			if (player.x === x) {
-				if (Math.random() < 0.5)
+				/*if (Math.random() < 0.5)
 					x += 1;
 				else 
-					x -= 1;
+					x -= 1;*/
 			}
-			if (this.pow >= this.addCost) {
+			else if (this.pow >= this.addCost) {
 				this.pow -= this.addCost;
 				this.heights[x] += multi || 1;	
 				this.beamx = x;
@@ -106,14 +106,11 @@ function Ground() {
 				forw = false;
 			}
 			diff = this.heights[x - i + 1] - this.heights[x - i];
-			if (diff >= -1 && diff <= 2 && backw) {
+			if (diff >= -1 && diff <= 2 && i < 2 && this.heights[player.x + 1] > this.heights[player.x] + 1) {
 				if (this.heights[x - i] > maxh) {
 					maxh = this.heights[x - i];
 					maxx = x - i;
 				}
-			}
-			else {
-				backw = false;
 			}
 		}
 		return [maxx, maxh]

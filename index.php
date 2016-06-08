@@ -3,7 +3,7 @@
 <title>Divine climb</title>
 <link rel="shortcut icon" href="/boltlogo.png">
 <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
-<!--<script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>-->
+<script src='https://cdn1.kongregate.com/javascripts/kongregate_api.js'></script>
 <link href="style.css" rel="stylesheet">
 <?php 
 foreach (glob("game/*.js") as $filename)
