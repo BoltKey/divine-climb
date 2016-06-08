@@ -3,7 +3,7 @@ function ScrollManager(levelsize, sensitivity) {
 	this.sensitivity = sensitivity;
 	this.shakeoffset = [0, 0];
 	this[0] = 0;
-	this[1] = 1
+	this[1] = 1;
 	this.size = levelsize;
 	this.scrollspeed = [0, 0];
 	this.midrelative = [0, 0];
@@ -16,9 +16,6 @@ function ScrollManager(levelsize, sensitivity) {
 			this.posoffset[i] += this.scrollspeed[i];
 			this.shakeoffset[i] -= this.shakeoffset[i] / 10;
 		}
-		/*for (e of proton.emitters) {
-			e.p.x += this.scrollspeed[0];
-		}*/
 		this[0] = Math.floor(this.posoffset[0] + this.shakeoffset[0]);
 		this[1] = Math.floor(this.posoffset[1] + this.shakeoffset[1]);
 	}

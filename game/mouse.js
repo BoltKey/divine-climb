@@ -5,6 +5,9 @@ function click() {
 	var col = getMouseCol();
 	console.log("the col is " + col);
 	ground.removeBlock(col);
+	if (!ingame && timer > 100) {
+		restart();
+	}
 }
 function rightClick(e) {
 	var col = getMouseCol();
@@ -27,7 +30,6 @@ function mouseIdle() {
 }
 
 function release() {
-	/**/
 }
 
 function isMouseIn(obj) {
